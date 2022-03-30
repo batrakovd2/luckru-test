@@ -4,11 +4,11 @@ class Route
 {
     static function start()
     {
-        $controller_name = 'Main';
-        $action_name = 'index';
+        $controllerName = 'Phonebook';
+        $actionName = 'index';
 
         $routes = explode('/', $_SERVER['REQUEST_URI']);
-        var_dump($routes);
+
         if ( !empty($routes[1]) )
         {
             $controllerName = $routes[1];
@@ -31,9 +31,8 @@ class Route
         {
 //            Route::ErrorPage404();
         }
-
         $controller = new $controller_name;
-        $action = $action_name;
+        $action = $actionName;
 
         if(method_exists($controller, $action))
         {
