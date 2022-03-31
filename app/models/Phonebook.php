@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-use Model;
+use app\core\Model;
 
 class Phonebook extends Model
 {

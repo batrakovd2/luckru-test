@@ -19,27 +19,20 @@ class Route
         if ( !empty($routes[2]) ) {
             $actionName = $routes[2];
         }
+        $controllerFile = $controllerName.'Controller.php';
+        $controllerPath = "app/controllers/".$controllerFile;
+        $controllerName = '\app\controllers\\'.$controllerName.'Controller';
 
-//        $controllerName = 'app\controllers\\'.$controllerName.'Controller';
-//        $controllerFile = $controllerName.'.php';
-//        $controllerPath = "app/controllers/".$controllerFile;
-//        return $controllerName;
-//        if(file_exists($controllerPath)) {
-//            include "app/controllers/".$controllerFile;
-//        } else {
-//            Route::ErrorPage404();
-//        }
-//        print($controllerName);
-        $controller = new PhonebookController();
-
+        if(!file_exists($controllerPath)) {
+            Route::ErrorPage404();
+        }
+        $controller = new $controllerName;
         $action = $actionName;
-
         if(method_exists($controller, $action)) {
-            $controller->index();
+            $controller->$action();
         } else {
             Route::ErrorPage404();
         }
-
     }
 
     private static function ErrorPage404()

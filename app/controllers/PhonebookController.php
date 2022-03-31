@@ -8,7 +8,7 @@ use app\models\Phonebook;
 class PhonebookController extends Controller
 {
     public function index() {
-//        $model = new Phonebook();
+        $model = new Phonebook();
 //        $contacts = $model->getAllContacts();
 //        print_r($contacts);
         $this->view->render('phonebook.php');
