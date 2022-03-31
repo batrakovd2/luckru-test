@@ -9,8 +9,8 @@ class PhonebookController extends Controller
 {
     public function index() {
         $model = new Phonebook();
-//        $contacts = $model->getAllContacts();
-//        print_r($contacts);
+        $contacts = $model->getAllContacts();
+        print_r($contacts);
         $this->view->render('phonebook.php');
     }
 
