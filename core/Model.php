@@ -1,9 +1,8 @@
 <?php
 
-class Model
-{
-    public function getData() {
+namespace app\core;
 
-    }
+class Model extends DB
+{
 
 }
