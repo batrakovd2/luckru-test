@@ -10,8 +10,7 @@ class Phonebook extends Model
         return $this->getAll("phonebook");
     }
 
-    public function saveContact() {
-        $params = [];
+    public function saveContact($params = []) {
         $this->save("phonebook", $params);
     }
 

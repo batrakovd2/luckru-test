@@ -10,30 +10,11 @@ $(document).ready(function () {
         $.ajax({
             type: "POST",
             url: api,
-            data: params.serialize(),
-            success: function (response) {
-                console.log(response)
-            }
+            processData: false,
+            contentType: false,
+            data: params,
+            success: responseFunc
         });
-
-
-        // $.post(api, params).done(function (response) {
-        //     responseFunc(response);
-        // });
-        // fetch(api, {
-        //     method: 'POST',
-        //     body: params
-        // }).then(function (response) {
-        //     console.log(response);
-        //     if(!response.ok) {
-        //         console.log('no ok');
-        //     }
-        //     return response.json();
-        // }).then(function (resp) {
-        //     console.log(resp);
-        //     // const json = response.json()
-        //     // responseFunc(json);
-        // });
 
     }
 

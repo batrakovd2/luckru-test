@@ -16,9 +16,10 @@ class PhonebookController extends Controller
     }
 
     public function create() {
-//        print_r($_SERVER);
-        $this->model->save();
-        return array("status" => "ok");
+        $params = $_POST;
+        $this->model = new Phonebook();
+        $this->model->saveContact($params);
+        return "ok";
     }
 
     public function update() {
