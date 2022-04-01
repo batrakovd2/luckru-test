@@ -24,14 +24,14 @@ class Route
         $controllerName = '\app\controllers\\'.$controllerName.'Controller';
 
         if(!file_exists($controllerPath)) {
-            Route::ErrorPage404();
+//            Route::ErrorPage404();
         }
-        $controller = new $controllerName;
+        $controller = new $controllerName();
         $action = $actionName;
         if(method_exists($controller, $action)) {
             $controller->$action();
         } else {
-            Route::ErrorPage404();
+//            Route::ErrorPage404();
         }
     }
 

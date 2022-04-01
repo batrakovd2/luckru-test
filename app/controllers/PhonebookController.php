@@ -7,15 +7,18 @@ use app\models\Phonebook;
 
 class PhonebookController extends Controller
 {
+    public $model;
+
     public function index() {
-        $model = new Phonebook();
-        $contacts = $model->getAllContacts();
-        print_r($contacts);
-        $this->view->render('phonebook.php');
+        $this->model = new Phonebook();
+        $contacts = $this->model->getAllContacts();
+        $this->view->render('phonebook.php', $contacts);
     }
 
     public function create() {
-
+//        print_r($_SERVER);
+        $this->model->save();
+        return array("status" => "ok");
     }
 
     public function update() {

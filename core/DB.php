@@ -41,4 +41,11 @@ class DB
         return $result[0];
     }
 
+    public function save($table, $params = [])
+    {
+        $result = $this->query("INSERT INTO $table (`lastname`, `name`, `patronymic`, `phone`, `contact_type`) VALUES" , $params);
+        return array("status" => 200);
+
+    }
+
 }

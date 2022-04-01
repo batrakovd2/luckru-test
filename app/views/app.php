@@ -2,9 +2,10 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8">
-    <title>Главная</title>
-    <link href="/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Телефонная книга</title>
+    <link href="/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 </head>
 <body>
     <?php include 'app/views/' . $template; ?>
@@ -18,11 +19,32 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <form action="#" id="addContact">
+                        <div class="mb-3">
+                            <label for="lastname" class="form-label">Фамилия</label>
+                            <input type="text" class="form-control"  name="lastname" id="lastname" placeholder="Фамилия">
+                        </div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Имя</label>
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Имя">
+                        </div>
+                        <div class="mb-3">
+                            <label for="patronymic" class="form-label">Отчество</label>
+                            <input type="text" class="form-control" name="patronymic" id="patronymic" placeholder="Отчество">
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Телефон</label>
+                            <input type="text" class="form-control" name="phone" id="phone" placeholder="Телефон">
+                        </div>
+                        <div class="mb-3">
+                            <label for="contact_type" class="form-label">Примечание</label>
+                            <input type="text" class="form-control" name="contact_type" id="contact_type" placeholder="Примечание">
+                        </div>
+                    </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Добавить</button>
+                <div class="modal-footer ">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отменить</button>
+                    <button type="button" class="btn btn-primary addContactBtn">Добавить</button>
                 </div>
             </div>
         </div>
