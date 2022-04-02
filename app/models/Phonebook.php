@@ -11,7 +11,30 @@ class Phonebook extends Model
     }
 
     public function saveContact($params = []) {
-        $this->save("phonebook", $params);
+        try {
+            $this->save("phonebook", $params);
+            echo 200;
+        } catch (\Exception $e) {
+            echo 500;
+        }
+    }
+
+    public function updateContact($params = []) {
+        try {
+            $this->update("phonebook", $params);
+            echo 200;
+        } catch (\Exception $e) {
+            echo 500;
+        }
+    }
+
+    public function deleteContact($params = []) {
+        try {
+            $this->delete("phonebook", $params);
+            echo 200;
+        } catch (\Exception $e) {
+            echo 500;
+        }
     }
 
 }

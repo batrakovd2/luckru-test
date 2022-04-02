@@ -22,7 +22,7 @@
                     <form action="#" id="addContact">
                         <div class="mb-3">
                             <label for="lastname" class="form-label">Фамилия</label>
-                            <input type="text" class="form-control"  name="lastname" id="lastname" placeholder="Фамилия">
+                            <input type="text" class="form-control"  name="lastname" id="lastname" placeholder="Фамилия" >
                         </div>
                         <div class="mb-3">
                             <label for="name" class="form-label">Имя</label>

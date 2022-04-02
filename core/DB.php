@@ -43,9 +43,17 @@ class DB
 
     public function save($table, $params = [])
     {
-        $result = $this->query("INSERT INTO $table (`lastname`, `name`, `patronymic`, `phone`, `contact_type`) VALUES" , $params);
-        return array("status" => 200);
+        $this->query("INSERT INTO $table (`lastname`, `name`, `patronymic`, `phone`, `contact_type`) VALUES (:lastname, :name, :patronymic, :phone, :contact_type)" , $params);
+    }
 
+    public function update($table, $params = [])
+    {
+        $this->query("UPDATE $table SET `lastname`=:lastname, `name`=:name, `patronymic`=:patronymic, `phone`=:phone, `contact_type`=:contact_type WHERE `id` = :id" , $params);
+    }
+
+    public function delete($table, $params = [])
+    {
+        $this->query("DELETE FROM $table WHERE `id` = :id" , $params);
     }
 
 }

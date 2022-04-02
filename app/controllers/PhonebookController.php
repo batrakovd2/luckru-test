@@ -18,15 +18,18 @@ class PhonebookController extends Controller
     public function create() {
         $params = $_POST;
         $this->model = new Phonebook();
-        $this->model->saveContact($params);
-        return "ok";
+        return $this->model->saveContact($params);
     }
 
     public function update() {
-
+        $params = $_POST;
+        $this->model = new Phonebook();
+        return $this->model->updateContact($params);
     }
 
     public function destroy() {
-
+        $params = $_POST;
+        $this->model = new Phonebook();
+        return $this->model->deleteContact($params);
     }
 }

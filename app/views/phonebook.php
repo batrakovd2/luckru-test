@@ -17,16 +17,16 @@
                 </thead>
                 <tbody>
                 <?php foreach ($params as $key=>$param): ?>
-                <tr >
+                <tr>
                     <th scope="row"><?php echo $key + 1; ?></th>
-                    <td><?= $param['lastname']; ?></td>
-                    <td><?= $param['name']; ?></td>
-                    <td><?= $param['patronymic']; ?></td>
-                    <td><?= $param['phone']; ?></td>
-                    <td><?= $param['contact_type']; ?></td>
+                    <td class="editable" data-column="lastname"><?= $param['lastname']; ?></td>
+                    <td class="editable" data-column="name"><?= $param['name']; ?></td>
+                    <td class="editable" data-column="patronymic"><?= $param['patronymic']; ?></td>
+                    <td class="editable" data-column="phone"><?= $param['phone']; ?></td>
+                    <td class="editable" data-column="contact_type"><?= $param['contact_type']; ?></td>
                     <td>
-                        <a type="button" class="btn btn-primary"><i class="bi bi-pencil"></i></a>
-                        <a type="button" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                        <a type="button" class="btn btn-primary edit-row" data-id="<?= $param['id']; ?>"><span class="bi bi-pencil"></span></a>
+                        <a type="button" class="btn btn-danger delete-row" data-id="<?= $param['id']; ?>"><span class="bi bi-trash"></span></a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
