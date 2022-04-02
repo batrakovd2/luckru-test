@@ -32,24 +32,63 @@ $(document).ready(function () {
             '                </tr>')
     }
 
-    $('.addContactBtn').click(function () {
-        const params = getAnyPageParameters('#addContact');
-        const url = '/phonebook/create';
-        postRequest(url, params, function (response) {
-            if(response == 200) {
-                addRow(params);
-                $('#exampleModal').modal('hide')
+    function validate(params) {
+        let isValidate = 1
+        params.forEach(function(e, k) {
+            if(k == 'lastname' && e.length == 0) {
+                isValidate = 0;
+                $('#lastname').closest('.mb-3').append('<div class="invalid-feedback d-block">\n' +
+                    '      Введите фамилию!\n' +
+                    '    </div>')
             }
-        });
+            if(k == 'name' && e.length == 0)  {
+                isValidate = 0;
+                $('#name').closest('.mb-3').append('<div class="invalid-feedback d-block">\n' +
+                    '      Введите имя!\n' +
+                    '    </div>')
+            }
+            if(k == 'phone' && e.length == 0)  {
+                isValidate = 0;
+                $('#phone').closest('.mb-3').append('<div class="invalid-feedback d-block">\n' +
+                    '      Введите телефон!\n' +
+                    '    </div>')
+            }
+        })
+
+        return isValidate;
+    }
+
+    $('#exampleModal').on('hidden.bs.modal', function (event) {
+        $('#exampleModal .invalid-feedback').remove();
+    })
+
+    $('.addContactBtn').click(function () {
+        let params = getAnyPageParameters('#addContact');
+        const url = '/phonebook/create';
+
+        isValidate = validate(params);
+
+        if(isValidate) {
+            postRequest(url, params, function (response) {
+                if(response == 200) {
+                    addRow(params);
+                    $('#exampleModal .invalid-feedback').remove();
+                    $('#exampleModal').modal('hide');
+
+                }
+            });
+        }
+
     });
 
     $('body').on('click', function (e) {
         if($(e.target).hasClass('bi-check')) {
+            let self = $(e.target).closest('.edit-row');
             let formdata = new FormData();
             $('.editable.selected').each(function () {
                 formdata.append($(this).data("column"), $(this).text())
             });
-            formdata.append("id", $(this).data('id'))
+            formdata.append("id", self.data('id'))
             const url = '/phonebook/update';
             postRequest(url, formdata, function (response) {
                 if(response == 200) {
